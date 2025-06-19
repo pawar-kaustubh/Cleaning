@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 export default function CategoryList({ categoryList }) {
@@ -9,7 +10,7 @@ export default function CategoryList({ categoryList }) {
     >
       {categoryList.length > 0
         ? categoryList.map((category) => (
-            <div
+            <Link href={'/search/'+category.name}
               key={category.id} // ✅ correct usage
               className={`flex flex-col items-center justify-center gap-2 
               bg-purple-200 p-5 rounded-lg curp hover:scale-110 transition-all ease-in-out`}
@@ -21,7 +22,7 @@ export default function CategoryList({ categoryList }) {
                 height={35}
               />
               <h2 className="text-primary">{category.name}</h2>
-            </div>
+            </Link>
           ))
         : [1, 2, 3, 4, 5, 6].map((item, index) => (
             <div

@@ -2,7 +2,16 @@
 const nextConfig = {
   reactStrictMode: false,
   images: {
-    domains: ['ap-south-1.graphassets.com'], // ✅ fix here
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'ap-south-1.graphassets.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+      },
+    ],
   },
 };
 

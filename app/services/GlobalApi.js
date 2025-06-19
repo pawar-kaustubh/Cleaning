@@ -1,4 +1,4 @@
-const { gql, default: request } = require("graphql-request")
+const { gql, default: request } = require("graphql-request");
 const MASTER_URL =
   "https://ap-south-1.cdn.hygraph.com/content/" +
   process.env.NEXT_PUBLIC_MASTER_URL_KEY +
@@ -23,10 +23,36 @@ const getCategory = async () => {
   return result;
 };
 
-const getAllBusinessList=async () => {
-    const query=gql`
+const getAllBusinessList = async () => {
+  const query = gql`
     query BusinessList {
-  businessLists {
+      businessLists {
+        about
+        address
+        category {
+          name
+        }
+        contactPerson
+        email
+        images {
+          url
+        }
+        id
+        name
+      }
+    }
+  `;
+  const result = await request(MASTER_URL, query);
+  return result;
+};
+
+const getBusinessByCategory = async (category) => {
+  const query =
+  gql`query MyQuery {
+    businessLists(where: {category:
+   {name: "` +
+    category +
+    `"}}) {
     about
     address
     category {
@@ -34,19 +60,20 @@ const getAllBusinessList=async () => {
     }
     contactPerson
     email
+    id
+    name
     images {
       url
     }
-    id
-    name
   }
-}
-    `
-    const result = await request(MASTER_URL, query);
+}`;
+  const result = await request(MASTER_URL, query);
   return result;
-}
-
-export default {
-  getCategory,
-  getAllBusinessList
 };
+
+      
+      export default {
+        getCategory,
+        getAllBusinessList,
+        getBusinessByCategory
+      };
