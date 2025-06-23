@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { Button } from "@/components/ui/button"; // Ensure this is imported
+import Link from "next/link";
 
 export default function BusinessList({ businessList, title }) {
   return (
@@ -12,7 +13,7 @@ export default function BusinessList({ businessList, title }) {
       >
         {businessList.length > 0
           ? businessList.map((business) => (
-              <div
+              <Link href={'/details/'+business.id}
                 key={business.id} // ✅ Prefer unique key like `business.id`
                 className="shadow-md rounded-lg hover:shadow-lg cursor-pointer hover:shadow-primary hover:scale-105 transition-all ease-in-out"
               >
@@ -32,7 +33,7 @@ export default function BusinessList({ businessList, title }) {
                   <h2 className="text-gray-500 text-sm">{business.address}</h2>
                   <Button className="rounded-lg mt-3">Book Now</Button>
                 </div>
-              </div>
+              </Link>
             ))
           : [1, 2, 3, 4, 5, 6, 7, 8].map((item, index) => (
               <div

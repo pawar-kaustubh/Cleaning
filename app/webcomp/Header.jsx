@@ -33,7 +33,8 @@ export default function Header() {
       <div className="flex items-center justify-between max-w-7xl mx-auto p-4">
         {/* Left: Logo and Navigation */}
         <div className="flex items-center gap-8">
-          <Image src="/logo.svg" alt="logo" width={180} height={50} priority />
+          {/* <Image src="/logo.svg" alt="logo" width={180} height={50} priority /> */}
+          <h1 className="font-bold text-primary text-4xl">Clean On</h1>
           <nav className="md:flex items-center gap-8 hidden">
             <h2 className="cursor-pointer hover:scale-105 hover:text-primary transition-all">
               Home
@@ -73,14 +74,14 @@ export default function Header() {
                     <DropdownMenuLabel>My Account</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem>My Booking</DropdownMenuItem>
-                    <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
-                   
+                    <DropdownMenuItem onClick={handleLogout}>
+                      Logout
+                    </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (
                 <span className="text-sm">{user?.email}</span>
               )}
-             
             </>
           )}
         </div>
